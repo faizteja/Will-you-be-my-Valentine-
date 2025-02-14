@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine?</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+        body {
+            background: url('romantic-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Dancing Script', cursive;
+            color: white;
+            text-align: center;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            position: relative;
+        }
+        .image-container {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+        .left-images {
+            left: 10px;
+        }
+        .right-images {
+            right: 10px;
+        }
+        .image-container img {
+            width: 200px;
+            height: 220px;
+            border-radius: 20px;
+        }
+        .container {
+            padding: 20px;
+            background: rgba(255, 192, 203, 0.9);
+            display: inline-block;
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.7);
+            width: 60%;
+            text-align: center;
+            position: relative;
+        }
+        h1 {
+            font-size: 50px;
+            text-shadow: 3px 3px 5px rgba(0,0,0,0.5);
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .btn {
+            font-size: 22px;
+            padding: 12px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .yes {
+            background-color: #ff4081;
+            color: white;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.3);
+        }
+        .yes:hover {
+            background-color: #d6336c;
+        }
+        .no {
+            background-color: white;
+            color: #ff4081;
+            font-size: 20px;
+            position: relative;
+        }
+        .no:active {
+            transform: scale(0.8);
+        }
+        .message {
+            font-size: 24px;
+            color: white;
+            margin-top: 30px;
+            font-style: italic;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        .heart {
+            position: fixed;
+            color: red;
+            font-size: 24px;
+            top: -50px;
+            animation: fall 4s linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-50px); opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container left-images">
+        <img src="IMG-20240816-WA0026.jpg" alt="Valentine Image 1">
+        <img src="IMG_6372.PNG" alt="Valentine Image 2">
+        <img src="IMG_6371.PNG" alt="Valentine Image 3">
+    </div>
+    
+    <div class="container">
+        <div class="message">
+            Isn't it magical that the one who once swore to remain single now finds her every thought consumed by you? Isn't it beautiful that she eagerly awaits your presence, cherishing every moment you share? Isn't it enchanting that she longs to know you deeper, to hear your voice, to feel your touch, and to be wrapped in the warmth of your presence?
+            <br><br>
+            Isn't it wondrous that she dreams of loving you beyond measure, to the moon and back? That she has found you, knows you, speaks with you, touches you, and feels your very essence surrounding her? Isn't it breathtaking that in you, she has discovered her one true love?
+            <br><br>
+            Isn't it extraordinary that she is hopelessly, madly, and irrevocably in love with you? That she envisions a lifetime by your side, a love story written in the stars? And isn't it the most beautiful thing of all that she pours her heart into words, declaring with all her soul— "I LOVE YOU"?
+        </div>
+        <h1>Will You Be My Valentine? ❤️</h1>
+        <div class="buttons">
+            <button class="btn yes" onclick="celebrate()">Yes</button>
+            <button class="btn no" onclick="nextNoStep(this)">No</button>
+        </div>
+        <div class="message">"Our love story is my favorite forever. 💕"</div>
+    </div>
+    
+    <div class="image-container right-images">
+        <img src="IMG_6367.PNG" alt="Valentine Image 4">
+        <img src="IMG_6368.PNG" alt="Valentine Image 5">
+        <img src="IMG_6369.PNG" alt="Valentine Image 6">
+    </div>
+    <script>
+        let noTexts = [
+            "Are you sure?", "Really sure?", "Think again", "Last chance!", "Pretty please?",
+            "I'll be sad..", "Don't do this!", "Change of heart?", "Final answer?"
+        ];
+        let noIndex = 0;
+        
+        function celebrate() {
+            alert('Yay! I Love You ❤️');
+            for (let i = 0; i < 50; i++) {
+                let heart = document.createElement("div");
+                heart.innerHTML = "❤️";
+                heart.classList.add("heart");
+                heart.style.left = Math.random() * window.innerWidth + "px";
+                heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }
+        }
+        function nextNoStep(button) {
+            if (noIndex < noTexts.length) {
+                button.innerText = noTexts[noIndex];
+                noIndex++;
+            } else {
+                document.querySelector('.buttons').innerHTML = 
+                    '<button class="btn yes" onclick="celebrate()">Yes</button>' +
+                    '<button class="btn yes" onclick="celebrate()">Yes</button>';
+            }
+        }
+    </script>
+
+</body>
+</html>
+
